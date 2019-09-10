@@ -58,8 +58,8 @@
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
 		<PackageReference Include="Uno.UI" Version="1.46.0-dev.2304" />
 		<PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.23" />
-		<PackageReference Include="Uno.Wasm.Bootstrap" Version="1.1.0-dev.313" />
-		<DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.1.0-dev.313" />
+		<PackageReference Include="Uno.Wasm.Bootstrap" Version="1.1.0-dev.317" />
+		<DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.1.0-dev.317" />
 	</ItemGroup>
 	<ItemGroup>
 		<MonoRuntimeMixedModeExcludedAssembly Include="Newtonsoft.Json" />
