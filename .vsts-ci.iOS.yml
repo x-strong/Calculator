@@ -9,7 +9,7 @@ jobs:
       value: $(build.sourcesdirectory)/.nuget
     - name: VersionCodeOffset
       value: 400559 # last value for the APK release
-    - group: apple.appstore.distribution
+    - group: unoplatform.apple.ios.appstore.distribution
 
   workspace:
      clean: all
@@ -21,6 +21,14 @@ jobs:
   - template: build/uno-ci/dotnet-install-mac.yml
   - template: build/uno-ci/jdk-setup.yml
 
+  - pwsh: |
+      gci -r -include "info.plist" |
+      foreach-object {
+          $a = $_.fullname; ( get-content $a ) |
+          foreach-object { $_ -replace "uno.platform.calculator","uno.platform.calculator-canary" }  | 
+          set-content $a }
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
+
   - task: UseDotNet@2
     displayName: 'Use .Net Core runtime 3.1.201'
     retryCountOnTaskFailure: 3
@@ -31,7 +39,7 @@ jobs:
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
     inputs:
-      certSecureFile: apple.appstore.distribution.p12
+      certSecureFile: unoplatform.apple.iOS.appstore.distribution.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
       deleteCert: true
@@ -41,6 +49,12 @@ jobs:
     inputs:
       provisioningProfileLocation: secureFiles
       provProfileSecureFile: Uno_Calculator.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: Install Provisioning Profile (Canary)
+    inputs:
+      provisioningProfileLocation: secureFiles
+      provProfileSecureFile: Uno_Calculator_Canary_iOS.mobileprovision
 
   - bash: |
       cd $(build.sourcesdirectory)/src/CalcManager
