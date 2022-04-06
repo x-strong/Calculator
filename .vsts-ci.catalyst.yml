@@ -79,7 +79,7 @@ jobs:
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      dotnet build -f net6.0-maccatalyst -c Release /p:CreatePackage=true /p:EnableCodeSigning=true /bl:$(build.artifactstagingdirectory)/build.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+      dotnet build -f net6.0-maccatalyst -c Release /bl:$(build.artifactstagingdirectory)/build.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
 
   - task: CopyFiles@2
     displayName: 'Publish Catalyst Binaries'
