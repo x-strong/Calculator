@@ -136,6 +136,7 @@
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
 				<CodeSignEntitlements>MacCatalyst\Entitlements.plist</CodeSignEntitlements>
+				<CodesignProvision>Uno Calculator Canary (Catalyst)</CodesignProvision>
 			</PropertyGroup>
 			<ItemGroup>
 				<TrimmerRootDescriptor Include="MacCatalyst/linker.xml" />
