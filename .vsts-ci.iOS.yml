@@ -39,21 +39,19 @@ jobs:
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
     inputs:
-      certSecureFile: unoplatform.apple.iOS.appstore.distribution.p12
+      certSecureFile: UnoPlatform-Apple-Distribution.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
       deleteCert: true
 
   - task: InstallAppleProvisioningProfile@1
     displayName: Install Provisioning Profile
-    condition: not(startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries'))
     inputs:
       provisioningProfileLocation: secureFiles
       provProfileSecureFile: Uno_Calculator.mobileprovision
 
   - task: InstallAppleProvisioningProfile@1
     displayName: Install Provisioning Profile (Canary)
-    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
     inputs:
       provisioningProfileLocation: secureFiles
       provProfileSecureFile: Uno_Calculator_Canary_iOS.mobileprovision
@@ -80,8 +78,6 @@ jobs:
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      echo $appleTeamId
-      echo $appleTeamName
       dotnet build -f net6.0-ios -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION"
 
     displayName: 'Build iOS Binaries (net6)'
