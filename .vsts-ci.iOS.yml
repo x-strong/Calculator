@@ -21,14 +21,6 @@ jobs:
   - template: build/uno-ci/dotnet-install-mac.yml
   - template: build/uno-ci/jdk-setup.yml
 
-  - pwsh: |
-      gci -r -include "info.plist" |
-      foreach-object {
-          $a = $_.fullname; ( get-content $a ) |
-          foreach-object { $_ -replace "uno.platform.calculator","uno.platform.calculator-canary" }  | 
-          set-content $a }
-    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
-
   - task: UseDotNet@2
     displayName: 'Use .Net Core runtime 3.1.201'
     retryCountOnTaskFailure: 3
@@ -85,8 +77,8 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Publish iOS Binaries (net6)'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-ios/ios-arm64
-      Contents: '*.ipa'
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-ios
+      Contents: '**/*.ipa'
       TargetFolder: $(build.artifactstagingdirectory)
       CleanTargetFolder: false
       OverWrite: false
