@@ -128,7 +128,7 @@ namespace CalculatorApp
         /// </summary>
         private static void InitializeLogging()
         {
-#if HAS_UNO
+#if HAS_UNO || __IOS__
 			var factory = LoggerFactory.Create(builder =>
             {
 #if __WASM__
@@ -181,7 +181,7 @@ namespace CalculatorApp
 
 			global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
 #endif
-        }
+		}
 
 		/// <summary>
 		/// Return True if animation is enabled by user setting.
