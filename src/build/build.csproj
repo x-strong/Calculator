@@ -134,7 +134,8 @@
 			
 			<_mobileSourceBasePath>../$(AppName).Mobile</_mobileSourceBasePath>
 			<_catalystPlistFilePath>$(_mobileSourceBasePath)/MacCatalyst/Info.plist</_catalystPlistFilePath>
-				
+			<_MobileiOSPlistFilePath>$(_mobileSourceBasePath)/iOS/Info.plist</_MobileiOSPlistFilePath>
+
 			<_AndroidNamespace>
 				<Namespace Prefix="android" Uri="http://schemas.android.com/apk/res/android" />
 			</_AndroidNamespace>
@@ -182,7 +183,7 @@
                             XmlFileName="$(_macPlistFilePath)"
                             XPath="//plist/dict/key[text() = 'CFBundleVersion']/following-sibling::string[1]"
                             Value="$(_BuildNumber)" />
-		
+
 		<!-- catalyst -->
 		<!-- Using our own _XmlUpdate instead of XmlPoke to avoid unecessary (and possibly breaking) changes in the plist -->
 		<_XmlUpdate Condition="Exists('$(_catalystPlistFilePath)')"
@@ -192,6 +193,18 @@
 
 		<_XmlUpdate Condition="Exists('$(_catalystPlistFilePath)')"
                             XmlFileName="$(_catalystPlistFilePath)"
+                            XPath="//plist/dict/key[text() = 'CFBundleVersion']/following-sibling::string[1]"
+                            Value="$(_BuildNumber)" />
+
+		<!-- Mobile iOS -->
+		<!-- Using our own _XmlUpdate instead of XmlPoke to avoid unecessary (and possibly breaking) changes in the plist -->
+		<_XmlUpdate Condition="Exists('$(_MobileiOSPlistFilePath)')"
+                            XmlFileName="$(_MobileiOSPlistFilePath)"
+                            XPath="//plist/dict/key[text() = 'CFBundleShortVersionString']/following-sibling::string[1]"
+                            Value="$(_AppVersion)" />
+
+		<_XmlUpdate Condition="Exists('$(_MobileiOSPlistFilePath)')"
+                            XmlFileName="$(_MobileiOSPlistFilePath)"
                             XPath="//plist/dict/key[text() = 'CFBundleVersion']/following-sibling::string[1]"
                             Value="$(_BuildNumber)" />
 
