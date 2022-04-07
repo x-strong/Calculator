@@ -85,7 +85,9 @@ jobs:
     displayName: 'Publish Catalyst Binaries'
     inputs:
       SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-maccatalyst/maccatalyst-x64
-      Contents: '*.pkg'
+      Contents: |
+        *.pkg
+        *.dSym/**
       TargetFolder: $(build.artifactstagingdirectory)
       CleanTargetFolder: false
       OverWrite: false

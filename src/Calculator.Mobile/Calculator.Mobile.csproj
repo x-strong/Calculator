@@ -99,7 +99,7 @@
 				<_NativeExecutableFrameworks Include="Security" />
 			</ItemGroup>
 			<PropertyGroup>
-				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++"</MtouchExtraArgs>
+				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
 				<InvariantGlobalization>false</InvariantGlobalization>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -126,7 +126,7 @@
 				</NativeReference>
 			</ItemGroup>
 			<PropertyGroup>
-			    <MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++"</MtouchExtraArgs>
+			    <MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
    				<InvariantGlobalization>false</InvariantGlobalization>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
