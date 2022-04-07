@@ -25,14 +25,12 @@
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
 		<key>XSAppIconAssets</key>
-		<string>Media.xcassets/AppIcon.appiconset</string>
+		<string>Media.xcassets/AppIcons.appiconset</string>
 		<key>UIAppFonts</key>
 		<array>
 			<string>Fonts/uno-fluentui-assets.ttf</string>
 			<string>Fonts/CalcMDL2.ttf</string>
 		</array>
-		<key>CFBundleIconName</key>
-		<string>AppIcons</string>
 		<key>LSApplicationCategoryType</key>
 		<string>public.app-category.utilities</string>
 	</dict>
