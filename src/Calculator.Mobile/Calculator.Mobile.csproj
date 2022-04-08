@@ -131,6 +131,7 @@
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<MtouchUseLlvm>true</MtouchUseLlvm>
+				<AOTMode>All</AOTMode>
 				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
 				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
 				<CreatePackage>true</CreatePackage>
