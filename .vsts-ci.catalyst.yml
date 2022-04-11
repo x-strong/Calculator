@@ -2,7 +2,7 @@ jobs:
 - job: Catalyst
 
   pool:
-    vmImage: 'macos-12'
+    vmImage: 'macos-11'
 
   variables:
     - name: NUGET_PACKAGES
