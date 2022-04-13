@@ -28,14 +28,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Calculator.macOS\" />
-	</ItemGroup>
 
 	<Choose>
 		<When Condition="'$(TargetFramework)'=='net6.0-android'">
-			<PropertyGroup>
+			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<AndroidKeyStore>true</AndroidKeyStore>
 				<AndroidSigningKeyStore>..\Calculator.Droid\calc-prod.keystore</AndroidSigningKeyStore>
 				<AndroidSigningKeyAlias>calc-prod</AndroidSigningKeyAlias>
@@ -147,4 +143,8 @@
 	</Choose>
 
 	<Import Project="..\Calculator.Shared\Calculator.Shared.projitems" Label="Shared" />
+
+	<ItemGroup>
+	  <AndroidResource Remove="Calculator.macOS\**" />
+	</ItemGroup>
 </Project>
