@@ -10,10 +10,22 @@ namespace Calculator
 		{
 #if NET6_0_OR_GREATER
 			// https://github.com/xamarin/xamarin-macios/issues/14740
-			if (System.Threading.Thread.CurrentThread.CurrentCulture.IsNeutralCulture)
+			if (string.IsNullOrEmpty(System.Threading.Thread.CurrentThread.CurrentCulture.Name))
 			{
-				System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-				System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+				var language = Foundation.NSLocale.PreferredLanguages.ElementAtOrDefault(0);
+
+				try
+				{
+					var cultureInfo = CultureInfo.CreateSpecificCulture(language);
+					CultureInfo.CurrentUICulture = cultureInfo;
+					CultureInfo.CurrentCulture = cultureInfo;
+					System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+					System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+				}
+				catch (Exception ex)
+				{
+					this.Log().Error($"Failed to set culture for language: {language}", ex);
+				}
 			}
 #endif
 			// if you want to use a different Application Delegate class from "AppDelegate"
