@@ -1,6 +1,9 @@
 using CalculatorApp;
 using UIKit;
+using System;
 using System.Linq;
+using System.Globalization;
+using System.Threading;
 
 namespace Calculator
 {
@@ -20,12 +23,12 @@ namespace Calculator
 					var cultureInfo = CultureInfo.CreateSpecificCulture(language);
 					CultureInfo.CurrentUICulture = cultureInfo;
 					CultureInfo.CurrentCulture = cultureInfo;
-					System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
-					System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+					Thread.CurrentThread.CurrentCulture = cultureInfo;
+					Thread.CurrentThread.CurrentUICulture = cultureInfo;
 				}
 				catch (Exception ex)
 				{
-					this.Log().Error($"Failed to set culture for language: {language}", ex);
+					Console.WriteLine($"Failed to set culture for language: {language}", ex);
 				}
 			}
 #endif
