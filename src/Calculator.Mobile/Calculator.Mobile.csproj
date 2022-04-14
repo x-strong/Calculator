@@ -6,7 +6,6 @@
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-ios'">iossimulator-x64</RuntimeIdentifier>
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">maccatalyst-x64</RuntimeIdentifier>
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-macos'">osx-x64</RuntimeIdentifier>
-		<InvariantGlobalization Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">true</InvariantGlobalization>
 		<!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 -->
 		<!-- <MtouchExtraArgs Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> -->
 		<!-- Required for C# Hot Reload -->
@@ -96,7 +95,6 @@
 			</ItemGroup>
 			<PropertyGroup>
 				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
-				<InvariantGlobalization>false</InvariantGlobalization>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
@@ -122,8 +120,7 @@
 				</NativeReference>
 			</ItemGroup>
 			<PropertyGroup>
-			    <MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
-   				<InvariantGlobalization>false</InvariantGlobalization>
+				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<MtouchUseLlvm>true</MtouchUseLlvm>
@@ -138,6 +135,34 @@
 			</PropertyGroup>
 			<ItemGroup>
 				<TrimmerRootDescriptor Include="MacCatalyst/linker.xml" />
+			</ItemGroup>
+		</When>		<When Condition="'$(TargetFramework)'=='net6.0-macos'">
+			<ItemGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' ">
+				<NativeReference Include="..\Calculator.macOS\NativeReferences/x86_64/libCalcManager.a">
+					<Kind>Static</Kind>
+				</NativeReference>
+			</ItemGroup>
+			<ItemGroup Condition=" '$(RuntimeIdentifier)' == 'osx-arm64' ">
+				<NativeReference Include="..\Calculator.macOS\NativeReferences/arm64/libCalcManager.a">
+					<Kind>Static</Kind>
+				</NativeReference>
+			</ItemGroup>
+			<PropertyGroup>
+				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
+			</PropertyGroup>
+			<PropertyGroup Condition="'$(Configuration)'=='Release'">
+				<MtouchUseLlvm>true</MtouchUseLlvm>
+				<_RunAotCompiler>True</_RunAotCompiler>
+				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
+				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+				<CreatePackage>true</CreatePackage>
+				<EnablePackageSigning>true</EnablePackageSigning>
+				<EnableCodeSigning>true</EnableCodeSigning>
+				<CodeSignEntitlements>macOS\Entitlements.plist</CodeSignEntitlements>
+				<CodesignProvision>Uno Calculator Canary (macOS)</CodesignProvision>
+			</PropertyGroup>
+			<ItemGroup>
+				<TrimmerRootDescriptor Include="macOS/linker.xml" />
 			</ItemGroup>
 		</When>
 	</Choose>
