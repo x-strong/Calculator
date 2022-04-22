@@ -39,6 +39,6 @@ steps:
       gci -r -include "AndroidManifest.xml" |
       foreach-object {
           $a = $_.fullname; ( get-content $a ) |
-          foreach-object { $_ -replace "uno.platform.calculator","uno.platform.calculator-canary" }  | 
+          foreach-object { $_ -replace "uno.platform.calculator","uno.platform.calculator.canary" }  | 
           set-content $a }
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
