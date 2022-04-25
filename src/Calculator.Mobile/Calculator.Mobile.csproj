@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst;net6.0-macos</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -51,7 +51,12 @@
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<RunAOTCompilation>true</RunAOTCompilation>
 			</PropertyGroup>
-	
+			
+			<ItemGroup>
+							<ItemGroup>
+				    <AndroidEnvironment Include="Android/environment.conf" />
+			</ItemGroup>
+			
 			<ItemGroup>
 				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\ARM\$(Configuration)\libCalcManager.so">
 					<Abi>armeabi-v7a</Abi>
@@ -189,6 +194,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidEnvironment Include="Android\Environment.conf" />
+	  <AndroidEnvironment Include="Android\environment.conf" />
 	</ItemGroup>
 </Project>
