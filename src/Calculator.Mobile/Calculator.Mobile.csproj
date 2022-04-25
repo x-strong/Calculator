@@ -147,7 +147,6 @@
 				<CodesignProvision>Uno Calculator Canary (Catalyst)</CodesignProvision>
 
 				<!-- https://github.com/xamarin/xamarin-macios/issues/14686 -->
-				<_RunAotCompiler>true</_RunAotCompiler>
 				<_LibMonoLinkMode>Static</_LibMonoLinkMode>
 				<_LibXamarinLinkMode>Static</_LibXamarinLinkMode>
 			</PropertyGroup>
