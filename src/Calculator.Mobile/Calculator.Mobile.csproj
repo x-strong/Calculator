@@ -94,7 +94,10 @@
 				<_NativeExecutableFrameworks Include="Security" />
 			</ItemGroup>
 			<PropertyGroup>
-				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
+				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
+
+				<!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+				<MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
@@ -120,7 +123,10 @@
 				</NativeReference>
 			</ItemGroup>
 			<PropertyGroup>
-				<MtouchExtraArgs>--registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
+				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
+				
+				<!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+				<MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
 			</PropertyGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<MtouchUseLlvm>true</MtouchUseLlvm>
@@ -176,5 +182,13 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="Calculator.macOS\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Android\Environment.conf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidEnvironment Include="Android\Environment.conf" />
 	</ItemGroup>
 </Project>
