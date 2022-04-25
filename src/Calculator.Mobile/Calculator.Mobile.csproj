@@ -51,12 +51,15 @@
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<RunAOTCompilation>true</RunAOTCompilation>
 			</PropertyGroup>
-			
+
 			<ItemGroup>
-							<ItemGroup>
-				    <AndroidEnvironment Include="Android/environment.conf" />
+				<AndroidEnvironment Include="Android/environment.conf" />
 			</ItemGroup>
 			
+			<ItemGroup>
+				<AndroidAsset Include="Android/Assets/**" />
+			</ItemGroup>
+
 			<ItemGroup>
 				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\ARM\$(Configuration)\libCalcManager.so">
 					<Abi>armeabi-v7a</Abi>
