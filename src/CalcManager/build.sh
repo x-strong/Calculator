@@ -19,7 +19,7 @@ emcc \
 	-s RESERVED_FUNCTION_POINTERS=64 \
     -s ALLOW_MEMORY_GROWTH=1 \
 	-s BINARYEN=1 \
-	-s DISABLE_EXCEPTION_CATCHING=0 \
+	-fwasm-exceptions \
 	-o bin/wasm/CalcManager.bc \
 	-r \
 	CEngine/*.cpp Ratpack/*.cpp *.cpp -I.
