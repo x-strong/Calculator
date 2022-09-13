@@ -65,10 +65,10 @@ jobs:
   - template: build/uno-ci/gitversion.yml
 
   - task: UseDotNet@2
-    displayName: 'Use .Net Core runtime 5.0.102'
+    displayName: 'Use .Net Core runtime 6.0.400'
     retryCountOnTaskFailure: 3
     inputs:
-      version: 5.0.102
+      version: 6.0.400
 
   - task: MSBuild@1
     displayName: 'Setup versions'
@@ -147,10 +147,10 @@ jobs:
     displayName: Use GitVersion
 
   - task: UseDotNet@2
-    displayName: 'Use .Net Core runtime 5.0.102'
+    displayName: 'Use .Net Core runtime 6.0.400'
     retryCountOnTaskFailure: 3
     inputs:
-      version: 5.0.102
+      version: 6.0.400
 
   - task: DownloadBuildArtifacts@0
     inputs:
