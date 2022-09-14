@@ -18,11 +18,11 @@ jobs:
   - template: build/uno-ci/gitversion.yml
 
   - task: UseDotNet@2
-    displayName: 'Use .Net Core runtime 5.0.102'
+    displayName: 'Use .NET runtime 6.0.400'
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 6.0.200
+      version: 6.0.400
 
   - template: build/uno-ci/dotnet-install-windows.yml
   - template: build/uno-ci/jdk-setup.yml
@@ -112,7 +112,7 @@ jobs:
 
   - script: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" /bl:$(build.artifactstagingdirectory)/android/msbuild-net6.binlog
+      dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-net6.binlog
     displayName: 'Build Store Packages (net6)'
 
   - task: CopyFiles@2
@@ -123,7 +123,7 @@ jobs:
       Contents: |
         **/*.aab
         **/*.apk
-      TargetFolder: $(build.artifactstagingdirectory)/android
+      TargetFolder: $(build.artifactstagingdirectory)/android-net6
       CleanTargetFolder: false
       OverWrite: false
       flattenFolders: false
@@ -136,7 +136,7 @@ jobs:
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /detailedsummary /p:SkipWasmBuild=true /p:BuildForPlayStore=true /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword)  "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" /bl:$(build.artifactstagingdirectory)/android/msbuild-xamarin.binlog
+      msbuildArguments: /r /p:Configuration=Release /detailedsummary /p:SkipWasmBuild=true /p:BuildForPlayStore=true /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword)  "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-xamarin.binlog
       clean: false
       maximumCpuCount: true
       restoreNugetPackages: false
@@ -151,12 +151,25 @@ jobs:
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /detailedsummary /p:BuildForPlayStore=false /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION"
+      msbuildArguments: /r /p:Configuration=Release /detailedsummary /p:BuildForPlayStore=false /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)"
       clean: false
       maximumCpuCount: true
       restoreNugetPackages: false
       logProjectEvents: false
       createLogFile: false
+
+  - task: CopyFiles@2
+    displayName: 'Publish Android Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Droid/bin/Release
+      Contents: |
+        **/*.aab
+        **/*.apk
+      TargetFolder: $(build.artifactstagingdirectory)/android-xamarin
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
 
   - script: dotnet publish -c Release -r win10-x64 --self-contained true $(build.sourcesdirectory)/src/Calculator.Skia.Gtk/Calculator.Skia.Gtk.csproj
     displayName: 'Build Skia win10-x64'
@@ -165,7 +178,7 @@ jobs:
     displayName: 'Archive Skia win10-x64'
     retryCountOnTaskFailure: 3
     inputs:
-      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net5.0\win10-x64\publish'
+      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net6.0\win10-x64\publish'
       archiveFile: '$(Build.ArtifactStagingDirectory)/skia/Calculator-win10-x64.zip' 
       includeRootFolder: false
 
@@ -176,19 +189,6 @@ jobs:
       SourceFolder: $(build.sourcesdirectory)/src/Calculator.Wasm/bin/Release/net5.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/wasm-interp
-      CleanTargetFolder: false
-      OverWrite: false
-      flattenFolders: false
-
-  - task: CopyFiles@2
-    displayName: 'Publish Android Binaries'
-    retryCountOnTaskFailure: 3
-    inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Droid/bin/Release
-      Contents: |
-        **/*.aab
-        **/*.apk
-      TargetFolder: $(build.artifactstagingdirectory)/android
       CleanTargetFolder: false
       OverWrite: false
       flattenFolders: false
