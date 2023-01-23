@@ -57,7 +57,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Publish Wasm Binaries'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Wasm/bin/Release/net5.0/dist
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Wasm/bin/Release/net7.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/Uno-Calculator-wasm
       CleanTargetFolder: false

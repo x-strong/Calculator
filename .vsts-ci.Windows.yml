@@ -112,18 +112,18 @@ jobs:
 
   - script: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-net6.binlog
-    displayName: 'Build Store Packages (net6)'
+      dotnet publish -f:net7.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-net7.binlog
+    displayName: 'Build Store Packages (net7)'
 
   - task: CopyFiles@2
-    displayName: 'Publish Android net6 Binaries'
+    displayName: 'Publish Android net7 Binaries'
     retryCountOnTaskFailure: 3
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-android
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net7.0-android
       Contents: |
         **/*.aab
         **/*.apk
-      TargetFolder: $(build.artifactstagingdirectory)/android-net6
+      TargetFolder: $(build.artifactstagingdirectory)/android-net7
       CleanTargetFolder: false
       OverWrite: false
       flattenFolders: false
@@ -178,7 +178,7 @@ jobs:
     displayName: 'Archive Skia win10-x64'
     retryCountOnTaskFailure: 3
     inputs:
-      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net6.0\win10-x64\publish'
+      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net7.0\win10-x64\publish'
       archiveFile: '$(Build.ArtifactStagingDirectory)/skia/Calculator-win10-x64.zip' 
       includeRootFolder: false
 
@@ -186,7 +186,7 @@ jobs:
     displayName: 'Publish Wasm Binaries'
     retryCountOnTaskFailure: 3
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Wasm/bin/Release/net5.0/dist
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Wasm/bin/Release/net7.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/wasm-interp
       CleanTargetFolder: false
