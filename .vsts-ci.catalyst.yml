@@ -34,7 +34,6 @@ jobs:
       certSecureFile: UnoPlatform-Apple-Distribution.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
-      deleteCert: true
 
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
@@ -42,7 +41,6 @@ jobs:
       certSecureFile: UnoPlatform-MacInstaller.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
-      deleteCert: true
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install Apple Provisioning Profile'
