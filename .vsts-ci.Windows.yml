@@ -22,7 +22,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 6.0.400
+      version: 7.0.102
 
   - template: build/uno-ci/dotnet-install-windows.yml
   - template: build/uno-ci/jdk-setup.yml
