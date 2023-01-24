@@ -50,3 +50,12 @@ jobs:
       rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net7.0\win10-x64\publish'
       archiveFile: '$(Build.ArtifactStagingDirectory)/skia/Calculator-win10-x64.zip' 
       includeRootFolder: false
+      
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Package Artifacts
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      pathToPublish: $(build.artifactstagingdirectory)
+      artifactType: container
+      artifactName: Calculator

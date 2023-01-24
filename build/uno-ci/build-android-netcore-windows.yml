@@ -58,3 +58,11 @@ jobs:
       OverWrite: false
       flattenFolders: false
 
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Package Artifacts
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      pathToPublish: $(build.artifactstagingdirectory)
+      artifactType: container
+      artifactName: Calculator
