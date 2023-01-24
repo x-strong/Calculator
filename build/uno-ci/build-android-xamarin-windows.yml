@@ -38,8 +38,7 @@ jobs:
       logProjectEvents: false
       createLogFile: false
 
-  - template: build/build-android-calcmanager-windows.yml
-
+  - template: build-calcmanager-windows.yml
 
   - task: MSBuild@1
     displayName: 'Build Store Packages (Xamarin)'

@@ -38,7 +38,7 @@ jobs:
       logProjectEvents: false
       createLogFile: false
 
-  - template: build/build-android-calcmanager-windows.yml
+  - template: build-calcmanager-windows.yml
 
   - script: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
