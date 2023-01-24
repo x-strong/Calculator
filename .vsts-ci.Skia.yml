@@ -223,7 +223,7 @@ jobs:
   dependsOn:
     - Linux_Skia_x86
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
 
   steps:
   - task: DownloadBuildArtifacts@0
@@ -344,7 +344,7 @@ jobs:
     - Linux_Skia_x86
     
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
 
   container:
     image: appimagecrafters/appimage-builder:0.7.2
@@ -378,6 +378,7 @@ jobs:
   - script: |
       /tmp/docker exec -t -u 0 ci-container \
       sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confold" -y install sudo"
+      sudo apt update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
       sudo apt -y install zip
     displayName: 'Setup dependencies'
