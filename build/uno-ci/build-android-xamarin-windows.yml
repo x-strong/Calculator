@@ -12,8 +12,8 @@ jobs:
      clean: all
 
   steps:
-  - template: build/uno-ci/canary-updater.yml
-  - template: build/uno-ci/gitversion.yml
+  - template: canary-updater.yml
+  - template: gitversion.yml
 
   - task: UseDotNet@2
     displayName: 'Use .NET SDK'
@@ -22,8 +22,8 @@ jobs:
       packageType: sdk
       version: 7.0.102
 
-  - template: build/uno-ci/dotnet-install-windows.yml
-  - template: build/uno-ci/jdk-setup.yml
+  - template: dotnet-install-windows.yml
+  - template: jdk-setup.yml
 
   - task: MSBuild@1
     inputs:
