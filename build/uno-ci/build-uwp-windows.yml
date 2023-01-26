@@ -41,10 +41,10 @@ jobs:
   - template: build-calcmanager-windows.yml
 
   - task: MSBuild@1
-    displayName: 'Build Store Packages (Xamarin)'
+    displayName: 'Build UWP'
     retryCountOnTaskFailure: 3
     inputs:
-      solution: src/Calculator.Droid/Calculator.Droid.csproj
+      solution: src/Calculator.UWP/Calculator.UWP.csproj
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
@@ -54,40 +54,3 @@ jobs:
       restoreNugetPackages: false
       logProjectEvents: false
       createLogFile: false
-
-  - task: MSBuild@1
-    displayName: 'Build Android AppCenter package'
-    retryCountOnTaskFailure: 3
-    inputs:
-      solution: src/Calculator.Droid/Calculator.Droid.csproj
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /detailedsummary /p:BuildForPlayStore=false /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)"
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: false
-      createLogFile: false
-
-  - task: CopyFiles@2
-    displayName: 'Publish Android Binaries'
-    retryCountOnTaskFailure: 3
-    inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Droid/bin/Release
-      Contents: |
-        **/*.aab
-        **/*.apk
-      TargetFolder: $(build.artifactstagingdirectory)/android-xamarin
-      CleanTargetFolder: false
-      OverWrite: false
-      flattenFolders: false
-      
-  - task: PublishBuildArtifacts@1
-    displayName: Publish Package Artifacts
-    condition: always()
-    retryCountOnTaskFailure: 3
-    inputs:
-      pathToPublish: $(build.artifactstagingdirectory)
-      artifactType: container
-      artifactName: Calculator
