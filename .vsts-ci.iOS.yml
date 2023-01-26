@@ -34,7 +34,6 @@ jobs:
       certSecureFile: UnoPlatform-Apple-Distribution.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
-      deleteCert: true
 
   - task: InstallAppleProvisioningProfile@1
     displayName: Install Provisioning Profile
@@ -72,10 +71,10 @@ jobs:
       cd $(build.sourcesdirectory)/src/Calculator.mobile
       dotnet publish -f net6.0-ios -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-net6.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION"
 
-    displayName: 'Build iOS Binaries (net6)'
+    displayName: 'Build iOS Binaries (netcore)'
 
   - task: CopyFiles@2
-    displayName: 'Publish iOS Binaries (net6)'
+    displayName: 'Publish iOS Binaries (netcore)'
     inputs:
       SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-ios
       Contents:  |

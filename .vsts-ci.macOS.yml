@@ -20,11 +20,11 @@ jobs:
   - template: build/uno-ci/gitversion.yml
 
   # Apply workaround for https://github.com/xamarin/xamarin-macios/issues/10652
-  - bash: |
-        curl -o xamarinmac.pkg 'https://bosstoragemirror.blob.core.windows.net/wrench/xcode12.4/a4c70e7d04e3904d17aa60f6d640eb048081c757/4477741/package/notarized/xamarin.mac-7.4.0.10.pkg'
-        sudo installer -pkg xamarinmac.pkg -target /
-
-    displayName: Apply Xamarin.mac workaround
+  # - bash: |
+  #       curl -o xamarinmac.pkg 'https://bosstoragemirror.blob.core.windows.net/wrench/xcode12.4/a4c70e7d04e3904d17aa60f6d640eb048081c757/4477741/package/notarized/xamarin.mac-7.4.0.10.pkg'
+  #       sudo installer -pkg xamarinmac.pkg -target /
+  # 
+  #   displayName: Apply Xamarin.mac workaround
 
   - task: UseDotNet@2
     displayName: 'Use .Net Core runtime 3.1.6'
@@ -39,7 +39,6 @@ jobs:
       certSecureFile: UnoPlatform-Apple-Distribution.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
-      deleteCert: true
 
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
@@ -47,7 +46,6 @@ jobs:
       certSecureFile: UnoPlatform-MacInstaller.p12
       certPwd: $(appleappstorecertificatepassword)
       keychain: temp
-      deleteCert: true
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install Apple Provisioning Profile'

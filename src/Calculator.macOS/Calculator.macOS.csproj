@@ -74,7 +74,7 @@
     <Reference Include="System.Memory" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="4.6.0-dev.116" />
+    <PackageReference Include="Uno.UI" Version="4.8.0-dev.30" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json">
@@ -86,7 +86,7 @@
     <PackageReference Include="Microsoft.AppCenter.Analytics">
       <Version>2.6.1</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.0-dev.116" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.8.0-dev.30" />
     <PackageReference Include="Uno.Core.Extensions.Disposables" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
@@ -152,4 +152,17 @@
       <ReferencePath Remove="@(_ReferencePathToRemove)" />
     </ItemGroup>
   </Target>
+
+	<!-- 
+    Workaround for Mac: https://developercommunity.visualstudio.com/t/XamarinMac-binaries-are-missing-in-173/10164443#T-N10164676 10/6/22
+    "Legacy" projects don't pick up top-level `Directory.Build.props` automatically, so we need to duplicate the workaround here temporarily.
+  -->
+	<ItemGroup>
+		<Reference Include="Xamarin.Mac">
+			<HintPath Condition="Exists('c:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\Xamarin.VisualStudio')">c:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\Xamarin.VisualStudio\Xamarin.Mac.dll</HintPath>
+			<HintPath Condition="Exists('c:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\Extensions\Xamarin.VisualStudio')">c:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\Extensions\Xamarin.VisualStudio\Xamarin.Mac.dll</HintPath>
+			<HintPath Condition="Exists('c:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Xamarin.VisualStudio')">c:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Xamarin.VisualStudio\Xamarin.Mac.dll</HintPath>
+			<HintPath Condition="Exists('c:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Xamarin.VisualStudio')">c:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Xamarin.VisualStudio\Xamarin.Mac.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 </Project>
