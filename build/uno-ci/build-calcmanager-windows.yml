@@ -57,27 +57,13 @@ steps:
       createLogFile: false
       
   - task: MSBuild@1
-    displayName: x64 Android build
+    displayName: Windows Build
     inputs:
       solution: src/CalcManager.Win32/CalcManager.Win32.vcxproj
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /p:Platform=x86 /detailedsummary
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: false
-      createLogFile: false
-      
-  - task: MSBuild@1
-    displayName: x64 Android build
-    inputs:
-      solution: src/CalcManager.Win32/CalcManager.Win32.vcxproj
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /p:Platform=x64 /detailedsummary
+      msbuildArguments: /r /p:Configuration=Release /detailedsummary
       clean: false
       maximumCpuCount: true
       restoreNugetPackages: false
