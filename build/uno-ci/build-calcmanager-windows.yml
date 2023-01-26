@@ -57,13 +57,27 @@ steps:
       createLogFile: false
       
   - task: MSBuild@1
-    displayName: Windows Build
+    displayName: Windows Build (x64)
     inputs:
       solution: src/Calculator.calcmanager-only.slnf
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /detailedsummary
+      msbuildArguments: /r /p:Configuration=Release /p:Platform=x64 /detailedsummary
+      clean: false
+      maximumCpuCount: true
+      restoreNugetPackages: false
+      logProjectEvents: false
+      createLogFile: false
+      
+  - task: MSBuild@1
+    displayName: Windows Build (x86)
+    inputs:
+      solution: src/Calculator.calcmanager-only.slnf
+      msbuildLocationMethod: version
+      msbuildVersion: latest
+      msbuildArchitecture: x86
+      msbuildArguments: /r /p:Configuration=Release /p:Platform=x86 /detailedsummary
       clean: false
       maximumCpuCount: true
       restoreNugetPackages: false
