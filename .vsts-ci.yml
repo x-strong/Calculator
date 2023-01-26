@@ -2,7 +2,7 @@ jobs:
 - template: build/uno-ci/build-android-xamarin-windows.yml
 - template: build/uno-ci/build-skia-windows.yml
 - template: build/uno-ci/build-android-netcore-windows.yml
-- template: build/uno-ci/build-uwp-windows.yml
+# - template: build/uno-ci/build-uwp-windows.yml # disabled for invalid native dependencies
 - template: .vsts-ci.Linux.yml
 - template: .vsts-ci.macOS.yml
 - template: .vsts-ci.catalyst.yml

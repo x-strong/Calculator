@@ -22,7 +22,6 @@ jobs:
       packageType: sdk
       version: 7.0.102
 
-  - template: dotnet-install-windows.yml
   - template: jdk-setup.yml
 
   - task: MSBuild@1
