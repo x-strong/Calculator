@@ -14,14 +14,6 @@ jobs:
   steps:
   - template: canary-updater.yml
   - template: gitversion.yml
-
-  - task: UseDotNet@2
-    displayName: 'Use .NET SDK'
-    retryCountOnTaskFailure: 3
-    inputs:
-      packageType: sdk
-      version: 7.0.102
-
   - template: dotnet-install-windows.yml
   - template: jdk-setup.yml
 
