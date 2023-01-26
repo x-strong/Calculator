@@ -59,7 +59,7 @@ steps:
   - task: MSBuild@1
     displayName: Windows Build
     inputs:
-      solution: src/CalcManager.Win32/CalcManager.Win32.vcxproj
+      solution: src/Calculator.calcmanager-only.slnf
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
