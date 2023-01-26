@@ -1,5 +1,5 @@
 jobs:
-- job: Windows_Android_Xamarin
+- job: Windows_UWP
   timeoutInMinutes: 90
 
   pool:
