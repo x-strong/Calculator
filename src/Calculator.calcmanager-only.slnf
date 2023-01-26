@@ -2,7 +2,6 @@
   "solution": {
     "path": "Calculator.sln",
     "projects": [
-      "CalcManager.Win32\\CalcManager.Win32.vcxproj",
       "CalcManager\\CalcManager.vcxproj",
     ]
   }
