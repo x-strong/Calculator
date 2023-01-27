@@ -129,6 +129,7 @@ namespace CalculatorApp
         /// </summary>
         private static void InitializeLogging()
         {
+#if !PRODUCTION
 			AppDomain.CurrentDomain.UnhandledException += (s, e) => {
                 global::System.Console.WriteLine(e.ExceptionObject);
 			};
@@ -189,6 +190,7 @@ namespace CalculatorApp
             global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
 
 			global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
+#endif
 #endif
 		}
 
