@@ -31,11 +31,11 @@ steps:
     displayName: 'Canary Update (5x)'
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/5x')
     inputs:
-      solution: $(build.sourcesdirectory)/NuGetPackageExplorer/NuGetPackageExplorer.sln
+      solution: src/Calculator.sln
       usePrivateFeed: false
       useNuGetOrg: true
       mergeBranch: true
-      branchToMerge: 'main'
+      branchToMerge: 'uno'
       nugetUpdaterVersion: '2.3.0-alpha.46'
       nugetVersion: feature.5x,dev
       packageAuthor: 'nventive,unoplatform,uno platform'
