@@ -2,18 +2,10 @@
 steps:
 
   - task: UseDotNet@2
-    displayName: 'Use .NET 5.0.406'
-    retryCountOnTaskFailure: 3
+    displayName: 'Use .NET'
     inputs:
-      packageType: runtime
-      version: 5.0.15
-
-  - task: UseDotNet@2
-    displayName: 'Use .NET runtime 2.2.x'
-    retryCountOnTaskFailure: 3
-    inputs:
-      packageType: runtime
-      version: 2.2.x
+      packageType: 'runtime'
+      version: '7.0.x'
 
   - task: nventiveCanaryUpdater@5
     displayName: 'Canary Update (dev)'
@@ -24,7 +16,7 @@ steps:
       branchToMerge: uno
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       resultFile: '$(Build.ArtifactStagingDirectory)/result.json'
-      nugetUpdaterVersion: 2.0.6
+      nugetUpdaterVersion: '2.3.0-alpha.46'
       packageAuthor: nventive
 
   - task: nventiveCanaryUpdater@5
