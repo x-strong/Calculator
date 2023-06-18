@@ -85,29 +85,6 @@ jobs:
       OverWrite: false
       flattenFolders: false
 
-  - task: MSBuild@1
-    inputs:
-      solution: '$(build.sourcesdirectory)/src/Calculator.iOS/Calculator.iOS.csproj'
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /p:Platform=iPhone /bl:$(build.artifactstagingdirectory)/build-xamarin.binlog  "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: true
-      createLogFile: true
-
-  - task: CopyFiles@2
-    displayName: 'Publish iOS Binaries'
-    inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.iOS/bin/iPhone/Release
-      Contents: '*.ipa'
-      TargetFolder: $(build.artifactstagingdirectory)
-      CleanTargetFolder: false
-      OverWrite: false
-      flattenFolders: false
-
   - task: PublishBuildArtifacts@1
     condition: always()
     retryCountOnTaskFailure: 3
