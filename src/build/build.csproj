@@ -151,20 +151,7 @@
 		<Message Text="Updating Package versions" />
 		<Message Text="_AppVersion: $(_AppVersion) _BuildNumber: $(_BuildNumber) _AppleBuildNumber: $(_AppleBuildNumber) _VersionCode: $(_VersionCode)" Importance="high" />
 
-		<!-- Android Xamarin -->
-		<XmlPoke Condition="Exists('$(_ManifestPath)')"
-                     XmlInputPath="$(_ManifestPath)"
-                     Query="/manifest/@android:versionName"
-                     Value="$(_AppVersion)"
-                     Namespaces="$(_AndroidNamespace)" />
-
-		<XmlPoke Condition="Exists('$(_ManifestPath)')"
-                     XmlInputPath="$(_ManifestPath)"
-                     Query="/manifest/@android:versionCode"
-                     Value="$(_VersionCode)"
-                     Namespaces="$(_AndroidNamespace)" />
-		
-		<!-- Android net6 -->
+		<!-- Android netcore -->
 		<XmlPoke Condition="Exists('$(_MobileAndroidManifestPath)')"
                      XmlInputPath="$(_MobileAndroidManifestPath)"
                      Query="/manifest/@android:versionName"
@@ -176,30 +163,6 @@
                      Query="/manifest/@android:versionCode"
                      Value="$(_VersionCode)"
                      Namespaces="$(_AndroidNamespace)" />
-
-		<!-- iOS -->
-		<!-- Using our own _XmlUpdate instead of XmlPoke to avoid unecessary (and possibly breaking) changes in the plist -->
-		<_XmlUpdate Condition="Exists('$(_PlistFilePath)')"
-                            XmlFileName="$(_PlistFilePath)"
-                            XPath="//plist/dict/key[text() = 'CFBundleShortVersionString']/following-sibling::string[1]"
-                            Value="$(_AppVersion)" />
-
-		<_XmlUpdate Condition="Exists('$(_PlistFilePath)')"
-                            XmlFileName="$(_PlistFilePath)"
-                            XPath="//plist/dict/key[text() = 'CFBundleVersion']/following-sibling::string[1]"
-                            Value="$(_AppleBuildNumber)" />
-
-		<!-- macOS -->
-		<!-- Using our own _XmlUpdate instead of XmlPoke to avoid unecessary (and possibly breaking) changes in the plist -->
-		<_XmlUpdate Condition="Exists('$(_macPlistFilePath)')"
-                            XmlFileName="$(_macPlistFilePath)"
-                            XPath="//plist/dict/key[text() = 'CFBundleShortVersionString']/following-sibling::string[1]"
-                            Value="$(_AppVersion)" />
-
-		<_XmlUpdate Condition="Exists('$(_macPlistFilePath)')"
-                            XmlFileName="$(_macPlistFilePath)"
-                            XPath="//plist/dict/key[text() = 'CFBundleVersion']/following-sibling::string[1]"
-                            Value="$(_AppleBuildNumber)" />
 
 		<!-- catalyst -->
 		<!-- Using our own _XmlUpdate instead of XmlPoke to avoid unecessary (and possibly breaking) changes in the plist -->
