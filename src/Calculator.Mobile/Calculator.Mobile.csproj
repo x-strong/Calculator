@@ -33,7 +33,7 @@
 		<When Condition="'$(TargetFramework)'=='net7.0-android'">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<AndroidKeyStore>true</AndroidKeyStore>
-				<AndroidSigningKeyStore>..\Calculator.Droid\calc-prod.keystore</AndroidSigningKeyStore>
+				<AndroidSigningKeyStore>Android\calc-prod.keystore</AndroidSigningKeyStore>
 				<AndroidSigningKeyAlias>calc-prod</AndroidSigningKeyAlias>
 				<DefineConstants>$(DefineConstants);HAS_APP_CENTER</DefineConstants>
 			</PropertyGroup>
@@ -62,16 +62,16 @@
 			</ItemGroup>
 
 			<ItemGroup>
-				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\ARM\$(Configuration)\libCalcManager.so">
+				<AndroidNativeLibrary Include="Android\libs\ARM\$(Configuration)\libCalcManager.so">
 					<Abi>armeabi-v7a</Abi>
 				</AndroidNativeLibrary>
-				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\ARM64\$(Configuration)\libCalcManager.so">
+				<AndroidNativeLibrary Include="Android\libs\ARM64\$(Configuration)\libCalcManager.so">
 					<Abi>arm64-v8a</Abi>
 				</AndroidNativeLibrary>
-				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\x86\$(Configuration)\libCalcManager.so">
+				<AndroidNativeLibrary Include="Android\libs\x86\$(Configuration)\libCalcManager.so">
 					<Abi>x86</Abi>
 				</AndroidNativeLibrary>
-				<AndroidNativeLibrary Include="..\Calculator.Droid\libs\x64\$(Configuration)\libCalcManager.so">
+				<AndroidNativeLibrary Include="Android\libs\x64\$(Configuration)\libCalcManager.so">
 					<Abi>x86_64</Abi>
 				</AndroidNativeLibrary>
 			</ItemGroup>
@@ -85,12 +85,12 @@
 				-->
 			</ItemGroup>
 			<ItemGroup Condition=" '$(RuntimeIdentifier)' == 'iossimulator-x64' ">
-				<NativeReference Include="..\Calculator.iOS\NativeReferences/x86_64/libCalcManager.a">
+				<NativeReference Include="iOS\NativeReferences/x86_64/libCalcManager.a">
 					<Kind>Static</Kind>
 				</NativeReference>
 			</ItemGroup>
 			<ItemGroup Condition=" '$(RuntimeIdentifier)' == 'ios-arm64' ">
-				<NativeReference Include="..\Calculator.iOS\NativeReferences/arm64/libCalcManager.a">
+				<NativeReference Include="iOS\NativeReferences/arm64/libCalcManager.a">
 					<Kind>Static</Kind>
 				</NativeReference>
 			</ItemGroup>
