@@ -34,18 +34,18 @@ jobs:
 
   - script: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-net6.binlog
-    displayName: 'Build Store Packages (net6)'
+      dotnet publish -f:net7.0-android -c:Release /p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidSigningStorePass=$(KeystorePassword) "/p:InformationalVersion=$(GITVERSION.INFORMATIONALVERSION)" /bl:$(build.artifactstagingdirectory)/android/msbuild-netcore.binlog
+    displayName: 'Build Store Packages (netcore)'
 
   - task: CopyFiles@2
     displayName: 'Publish Android netcore Binaries'
     retryCountOnTaskFailure: 3
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net6.0-android
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net7.0-android
       Contents: |
         **/*.aab
         **/*.apk
-      TargetFolder: $(build.artifactstagingdirectory)/android-net6
+      TargetFolder: $(build.artifactstagingdirectory)/android-netcore
       CleanTargetFolder: false
       OverWrite: false
       flattenFolders: false
