@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using CalculatorApp;
 using GLib;
-using Uno.UI.Runtime.Skia;
+using Uno.UI.Runtime.Skia.Gtk;
 
 namespace Calculator.Skia.Gtk
 {
