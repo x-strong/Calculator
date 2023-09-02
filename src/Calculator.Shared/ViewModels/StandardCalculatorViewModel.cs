@@ -145,7 +145,7 @@ namespace CalculatorApp.ViewModel
         public bool IsCurrentViewPinned { get => m_IsCurrentViewPinned; set { m_IsCurrentViewPinned = value; RaisePropertyChanged("IsCurrentViewPinned"); } }
 
 
-        private ObservableCollection<MemoryItemViewModel> m_MemorizedNumbers; // List<> => ObserableCollection<> because of https://github.com/nventive/Uno/issues/1046
+        private ObservableCollection<MemoryItemViewModel> m_MemorizedNumbers; // List<> => ObserableCollection<> because of https://github.com/unoplatform/Uno/issues/1046
 		public ObservableCollection<MemoryItemViewModel> MemorizedNumbers { get => m_MemorizedNumbers; set { m_MemorizedNumbers = value; RaisePropertyChanged("MemorizedNumbers"); } }
 
 

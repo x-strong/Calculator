@@ -3,9 +3,9 @@
 # - under linux: cd to your_path\calculator\src\CalcManager
 # - under WSL: cd `wslpath "your_path\calculator\src\CalcManager"`
 # Execute the following:
-#   git clone --branch 2.0.23 https://github.com/emscripten-core/emsdk
-#   ./emsdk install 2.0.23
-#   ./emsdk activate 2.0.23
+#   git clone --branch 3.1.34 https://github.com/emscripten-core/emsdk
+#   ./emsdk install 3.1.34
+#   ./emsdk activate 3.1.34
 #   source ./emsdk_env.sh
 # Navigate back to this file's folder in the same terminal
 
