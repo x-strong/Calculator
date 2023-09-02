@@ -17,13 +17,15 @@
 		<WasmShellMonoRuntimeExecutionMode Condition="'$(UseAOT)'!=''">InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
 		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
 		
+		<!--
 		<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
 		<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled >
+		-->
 		
 		<!-- https://github.com/dotnet/runtime/issues/50508 -->
 		<WasmShellEnableAOTDeduplication>false</WasmShellEnableAOTDeduplication>
 		
-		<!--<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>-->
+		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="..\Calculator.UWP\Assets\*.png" Link="Assets\%(FileName)%(Extension)" />
