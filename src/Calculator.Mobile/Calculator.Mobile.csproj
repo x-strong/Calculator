@@ -142,6 +142,7 @@
 				<MtouchUseLlvm>true</MtouchUseLlvm>
 				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
 				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+				<AssemblyName>Uno Calculator</AssemblyName>
 				<CreatePackage>true</CreatePackage>
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
@@ -188,12 +189,6 @@
 			</ItemGroup>
 		</When>
 	</Choose>
-
-	<Target Name="AdjustAppBundleName" BeforeTargets="BeforeBuild" Condition="'$(TargetFramework)'=='net7.0-maccatalyst'">
-		<PropertyGroup>
-			<_AppBundleName>Uno Calculator</_AppBundleName>
-		</PropertyGroup>
-	</Target>
 
 	<Import Project="..\Calculator.Shared\Calculator.Shared.projitems" Label="Shared" />
 
