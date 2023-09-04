@@ -3,9 +3,9 @@
 <plist version="1.0">
 	<dict>
 		<key>CFBundleName</key>
-		<string>Uno Calc</string>
+		<string>Uno Calculator</string>
 		<key>CFBundleDisplayName</key>
-		<string>Uno Calc</string>
+		<string>Uno Calculator</string>
 		<key>CFBundleIdentifier</key>
 		<string>uno.platform.calculator</string>
 		<key>CFBundleShortVersionString</key>

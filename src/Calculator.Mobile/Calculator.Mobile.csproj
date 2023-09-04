@@ -189,6 +189,12 @@
 		</When>
 	</Choose>
 
+	<Target Name="AdjustAppBundleName" BeforeTargets="BeforeBuild" Condition="'$(TargetFramework)'=='net7.0-maccatalyst'">
+		<PropertyGroup>
+			<_AppBundleName>Uno Calculator</_AppBundleName>
+		</PropertyGroup>
+	</Target>
+
 	<Import Project="..\Calculator.Shared\Calculator.Shared.projitems" Label="Shared" />
 
 	<ItemGroup>
