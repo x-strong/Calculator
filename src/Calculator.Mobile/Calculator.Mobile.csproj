@@ -142,7 +142,7 @@
 				<MtouchUseLlvm>true</MtouchUseLlvm>
 				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
 				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
-				<AssemblyName>Uno Calculator</AssemblyName>
+				<ApplicationTitle>Uno Calculator</ApplicationTitle>
 				<CreatePackage>true</CreatePackage>
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
