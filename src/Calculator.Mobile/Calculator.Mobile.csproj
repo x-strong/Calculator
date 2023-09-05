@@ -143,7 +143,6 @@
 				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
 				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
 				<ApplicationTitle>Uno Calculator</ApplicationTitle>
-				<_AppBundleName>Uno Calculator</_AppBundleName>
 				<CreatePackage>true</CreatePackage>
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
@@ -204,4 +203,12 @@
 	<ItemGroup>
 	  <AndroidEnvironment Include="Android\environment.conf" />
 	</ItemGroup>
+
+	<Target Name="CatalystUpdateAppBundleName"
+						BeforeTargets="BeforeBuild"
+						Condition="'$(TargetFramework)'=='net7.0-maccatalyst'">
+		<PropertyGroup>
+			<_AppBundleName>Uno Calculator</_AppBundleName>
+		</PropertyGroup>
+	</Target>
 </Project>
