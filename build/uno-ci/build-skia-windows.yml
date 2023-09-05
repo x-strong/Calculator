@@ -20,7 +20,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 7.0.102
+      version: 7.0.400
 
   - template: dotnet-install-windows.yml
   - template: jdk-setup.yml
