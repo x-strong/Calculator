@@ -136,6 +136,8 @@
 				</NativeReference>
 			</ItemGroup>
 			<PropertyGroup>
+				<IPhoneResourcePrefix>MacCatalyst/Resources</IPhoneResourcePrefix>
+
 				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
 				
 				<!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
