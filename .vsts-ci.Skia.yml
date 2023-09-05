@@ -68,7 +68,7 @@ jobs:
     displayName: 'Use .NET SDK'
     retryCountOnTaskFailure: 3
     inputs:
-      version: 7.0.102
+      version: 7.0.400
 
   - task: MSBuild@1
     displayName: 'Setup versions'
@@ -150,7 +150,7 @@ jobs:
     displayName: 'Use .NET SDK'
     retryCountOnTaskFailure: 3
     inputs:
-      version: 7.0.102
+      version: 7.0.400
 
   - task: DownloadBuildArtifacts@0
     inputs:
