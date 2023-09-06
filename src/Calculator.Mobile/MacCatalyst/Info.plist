@@ -5,12 +5,9 @@
 		<key>LSHasLocalizedDisplayName</key>
 		<true/>
 		<key>CFBundleName</key>
-		<string>Uno Calculator</string>
-		<!--
-		Do not set this value, it's overriden by InfoPlist.strings
+		<string>unocalc</string>
 		<key>CFBundleDisplayName</key>
-		<string>Calculator.Mobile</string>
-		-->
+		<string>unocalc</string>
 		<key>CFBundleIdentifier</key>
 		<string>uno.platform.calculator</string>
 		<key>CFBundleShortVersionString</key>
