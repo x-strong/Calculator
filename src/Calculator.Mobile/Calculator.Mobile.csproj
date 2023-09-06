@@ -123,7 +123,7 @@
 				 -->
 			</ItemGroup>
 			<ItemGroup>
-				<BundleResource Include="MacCatalyst/Resources/Base.lproj/InfoPList.strings" />
+				<BundleResource Include="MacCatalyst/Resources/*.lproj/InfoPList.strings" />
 			</ItemGroup>
 			<ItemGroup Condition=" '$(RuntimeIdentifier)' == 'maccatalyst-x64' ">
 				<NativeReference Include="MacCatalyst/NativeReferences/x86_64/libCalcManager.a">
@@ -137,6 +137,8 @@
 			</ItemGroup>
 			<PropertyGroup>
 				<IPhoneResourcePrefix>MacCatalyst/Resources</IPhoneResourcePrefix>
+				
+				<AssemblyName>unocalc</AssemblyName>
 
 				<MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static -gcc_flags "-lc++ -lstdc++" --dsym=true</MtouchExtraArgs>
 				
