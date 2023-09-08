@@ -24,8 +24,8 @@
 		
 		<!-- https://github.com/dotnet/runtime/issues/50508 -->
 		<WasmShellEnableAOTDeduplication>false</WasmShellEnableAOTDeduplication>
-		
-		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
+
+		<UnoXamlResourcesTrimming Condition="'$(Configuration)'=='Release'">true</UnoXamlResourcesTrimming>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="..\Calculator.UWP\Assets\*.png" Link="Assets\%(FileName)%(Extension)" />
@@ -78,6 +78,8 @@
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.2366" />
 		<PackageReference Include="Uno.Core.Extensions.Disposables" Version="4.0.1" />
 		<PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.6.0" />
+		<PackageReference Include="Nager.Country" Version="4.0.0" />
+		<PackageReference Include="Nager.Country.Translation" Version="3.0.4" />
 	</ItemGroup>
 	
 	<ItemGroup>

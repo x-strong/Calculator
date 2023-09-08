@@ -28,6 +28,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Nager.Country" Version="4.0.0" />
+		<PackageReference Include="Nager.Country.Translation" Version="3.0.4" />
 	</ItemGroup>
 
 	<Choose>
