@@ -1493,13 +1493,13 @@ namespace CalculatorApp.ViewModel
 			using (var @out = new StringWriter())
 			{
 				const string delimiter = "[;;;]";
-				@out.Write(m_resettingTimer);
+				@out.Write(m_resettingTimer ? "1" : "0");
 				@out.Write(delimiter);
 				@out.Write((int)(m_value1cp));
 				@out.Write(delimiter);
-				@out.Write(m_Value1Active);
+				@out.Write(m_Value1Active ? "1" : "0");
 				@out.Write(delimiter);
-				@out.Write(m_Value2Active);
+				@out.Write(m_Value2Active ? "1" : "0");
 				@out.Write(delimiter);
 				@out.Write(m_Value1);
 				@out.Write(delimiter);
