@@ -392,7 +392,7 @@ namespace CalculatorApp.ViewModel
 				return false;
 			}
 
-			StorageFolder localCacheFolder = ApplicationData.Current.LocalCacheFolder;
+			StorageFolder localCacheFolder = ApplicationData.Current.LocalFolder; // Uno specific, Original target: LocalCacheFolder 
 			if (localCacheFolder == null)
 			{
 				return false;
@@ -459,7 +459,7 @@ namespace CalculatorApp.ViewModel
 						new KeyValuePair<string, string>(CurrencyDataLoaderConstants.AllRatiosDataFilename, allRatiosResponse)
 					};
 
-					StorageFolder localCacheFolder = ApplicationData.Current.LocalCacheFolder;
+					StorageFolder localCacheFolder = ApplicationData.Current.LocalFolder; // Uno specific, Original target: LocalCacheFolder 
 					foreach (var fileInfo in cachedFiles)
 					{
 						await Utils.WriteFileToFolder(localCacheFolder, fileInfo.Key, fileInfo.Value, CreationCollisionOption.ReplaceExisting);
