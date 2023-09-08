@@ -388,4 +388,7 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-TW\CEngineStrings.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-TW\Resources.resw" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)DataLoaders\DefautlFromToCurrency.json" />
+  </ItemGroup>
 </Project>

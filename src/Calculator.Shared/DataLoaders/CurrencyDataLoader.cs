@@ -222,10 +222,10 @@ namespace CalculatorApp.ViewModel
 
 		public async void LoadData()
 		{
-			RegisterForNetworkBehaviorChanges();
-
 			if (!LoadFinished())
 			{
+				RegisterForNetworkBehaviorChanges();
+
 				var loadFunctions = new Func<Task<bool>>[]
 				{
 					TryLoadDataFromCacheAsync,
@@ -552,28 +552,35 @@ namespace CalculatorApp.ViewModel
 
 				var items = Newtonsoft.Json.JsonConvert.DeserializeObject<UCM.CurrencyStaticData[]>(rawJson);
 				staticData.Clear();
-				foreach (var item in items)
+
+				if (items is not null)
 				{
-					try
+					foreach (var item in items)
 					{
-						var translatedCountryName = translationProvider.GetCountryTranslatedName(item.countryCode, targetCulture.TwoLetterISOLanguageName);
-
-						if (translatedCountryName is not null)
+						try
 						{
-							staticData.Add(new UCM.CurrencyStaticData(item.countryCode, translatedCountryName, item.currencyCode, item.currencyCode, item.currencySymbol));
-							continue;
+							var translatedCountryName = translationProvider.GetCountryTranslatedName(item.countryCode, targetCulture.TwoLetterISOLanguageName);
+
+							if (translatedCountryName is not null)
+							{
+								staticData.Add(new UCM.CurrencyStaticData(item.countryCode, translatedCountryName, item.currencyCode, item.currencyCode, item.currencySymbol));
+								continue;
+							}
 						}
-					}
-					catch(Exception e)
-					{
-						// Ignore translation errors
-					}
+						catch (Exception e)
+						{
+							// Ignore translation errors
+						}
 
-					staticData.Add(new UCM.CurrencyStaticData(item.countryCode, item.countryName, item.currencyCode, item.currencyCode, item.currencySymbol));
+						staticData.Add(new UCM.CurrencyStaticData(item.countryCode, item.countryName, item.currencyCode, item.currencyCode, item.currencySymbol));
+					}
+					staticData.Sort((UCM.CurrencyStaticData unit1, UCM.CurrencyStaticData unit2) => { return unit1.countryName.CompareTo(unit2.countryName) < 0; });
+					return true;
 				}
-				staticData.Sort((UCM.CurrencyStaticData unit1, UCM.CurrencyStaticData unit2) => { return unit1.countryName.CompareTo(unit2.countryName) < 0; });
-
-				return true;
+				else
+				{
+					return false;
+				}
 			}
 			catch (Exception e)
 			{

@@ -1032,10 +1032,9 @@
 										 x:Uid="RefreshButtonText"
 										 Foreground="{ThemeResource SystemControlHyperlinkBaseHighBrush}"
 										 Click="CurrencyRefreshButton_Click" />
-						<TextBlock Margin="3,7,0,0"
+						<TextBlock Margin="3,6,0,0"
 								   Style="{ThemeResource CaptionTextBlockStyle}">
                             <Run x:Name="CurrencySecondaryStatus"
-								 FontWeight="SemiBold"
 								 Text="" />
 						</TextBlock>
 					</StackPanel>
