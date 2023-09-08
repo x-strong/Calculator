@@ -71,6 +71,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Uno.UI.WebAssembly" Version="5.0.0-dev.2366" />
+		<PackageReference Include="Uno.UI.Lottie" Version="5.0.0-dev.2366" />
 		<PackageReference Include="Uno.UI.Sample.Banner" Version="1.45.0-dev.64" />
 		<PackageReference Include="Uno.Wasm.Bootstrap" Version="8.0.0-dev.261" />
 		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="8.0.0-dev.261" />

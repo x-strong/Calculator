@@ -33,7 +33,7 @@ namespace CalculatorApp
 {
 	public sealed partial class UnitConverter : UserControl
 	{
-		const long DURATION_500_MS = 10000 * 500;
+		const long DURATION_500_MS = 500;
 
 		Windows.UI.Xaml.FlowDirection m_layoutDirection;
 		//Windows.Foundation.EventRegistrationToken m_propertyChangedToken;

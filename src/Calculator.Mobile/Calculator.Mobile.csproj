@@ -22,6 +22,7 @@
 	<ItemGroup>
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.4.0" />
 		<PackageReference Include="Uno.UI" Version="5.0.0-dev.2360" />
+		<PackageReference Include="Uno.UI.Lottie" Version="5.0.0-dev.2360" />
 		<PackageReference Include="Uno.Core.Extensions.Disposables" Version="4.0.1" />
 		<PackageReference Include="Uno.UI.RemoteControl" Version="5.0.0-dev.2360" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.2360" />
