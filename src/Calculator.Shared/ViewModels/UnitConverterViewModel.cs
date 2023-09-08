@@ -779,9 +779,6 @@ namespace CalculatorApp.ViewModel
 
 		bool m_relocalizeStringOnSwitch;
 
-		// For Saving the User Preferences only if the Unit converter ViewModel is initialised for the first time
-		bool m_IsFirstTime;
-
 		string m_localizedValueFromFormat;
 		string m_localizedValueFromDecimalFormat;
 		string m_localizedValueToFormat;
@@ -990,7 +987,6 @@ namespace CalculatorApp.ViewModel
 			Unit2AutomationName = m_localizedOutputUnitName;
 			IsDecimalEnabled = true;
 
-			m_IsFirstTime = true;
 			m_model.Initialize();
 			PopulateData();
 		}
@@ -998,7 +994,6 @@ namespace CalculatorApp.ViewModel
 		void ResetView()
 		{
 			m_model.SendCommand(UCM.Command.Reset);
-			m_IsFirstTime = true;
 			OnCategoryChanged(null);
 		}
 
@@ -1085,15 +1080,7 @@ namespace CalculatorApp.ViewModel
 				m_supplementaryResultsTimer.Cancel();
 			}
 
-			if (!m_IsFirstTime)
-			{
-				SaveUserPreferences();
-			}
-			else
-			{
-				RestoreUserPreferences();
-				m_IsFirstTime = false;
-			}
+			SaveUserPreferences();
 		}
 
 		void OnSwitchActive(object unused)

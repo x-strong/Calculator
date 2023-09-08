@@ -519,7 +519,7 @@ namespace UnitConversionManager
 
 				@out.Write(Quote(c.id.ToString()));
 				@out.Write(delimiter);
-				@out.Write(Quote(c.supportsNegative.ToString()));
+				@out.Write(Quote(c.supportsNegative ? "1" : "0"));
 				@out.Write(delimiter);
 				@out.Write(Quote(c.name));
 				@out.Write(delimiter);
@@ -1323,17 +1323,28 @@ namespace UnitConversionManager
 
 			if (!curUnits.IsEmpty())
 			{
+				// Units may already have been initialized through UnitConverter::RestoreUserPreferences().
+				// Check if they have been, and if so, do not override restored units.
+				bool isFromUnitValid = m_fromType != EMPTY_UNIT && curUnits.Contains(m_fromType);
+				bool isToUnitValid = m_toType != EMPTY_UNIT && curUnits.Contains(m_toType);
+
+				if (isFromUnitValid && isToUnitValid)
+				{
+					return;
+				}
+
+
 				bool conversionSourceSet = false;
 				bool conversionTargetSet = false;
 				foreach (Unit cur in curUnits)
 				{
-					if (!conversionSourceSet && cur.isConversionSource)
+					if (!conversionSourceSet && cur.isConversionSource && !isFromUnitValid)
 					{
 						m_fromType = cur;
 						conversionSourceSet = true;
 					}
 
-					if (!conversionTargetSet && cur.isConversionTarget)
+					if (!conversionTargetSet && cur.isConversionTarget && !isToUnitValid)
 					{
 						m_toType = cur;
 						conversionTargetSet = true;
