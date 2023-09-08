@@ -24,8 +24,8 @@
 		
 		<!-- https://github.com/dotnet/runtime/issues/50508 -->
 		<WasmShellEnableAOTDeduplication>false</WasmShellEnableAOTDeduplication>
-		
-		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
+
+		<UnoXamlResourcesTrimming Condition="'$(Configuration)'=='Release'">true</UnoXamlResourcesTrimming>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="..\Calculator.UWP\Assets\*.png" Link="Assets\%(FileName)%(Extension)" />
