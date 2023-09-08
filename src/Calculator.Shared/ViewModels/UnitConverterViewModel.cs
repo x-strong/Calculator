@@ -1830,12 +1830,15 @@ namespace CalculatorApp.ViewModel
 		};
 
 		// TODO UNO: KeyboardShortcutManager
-		public void OnKeyPress(VirtualKey key)
+		public bool OnKeyPress(VirtualKey key)
 		{
 			if (_keyToCommandMap.TryGetValue(key, out var cmd))
 			{
 				m_model.SendCommand(cmd);
+				return true;
 			}
+
+			return false;
 		}
 
 		public void OnPaste(String stringToPaste, ViewMode mode)
