@@ -1040,6 +1040,11 @@
 						</TextBlock>
 					</StackPanel>
 				</ContentControl>
+				
+				<HyperlinkButton Content="Rates by Exchange Rate API"
+								Foreground="{ThemeResource SystemControlHyperlinkBaseHighBrush}"
+								FontStyle="Italic"
+								NavigateUri="https://www.exchangerate-api.com" />
 
 				<!-- Offline TextBlock -->
 				<ContentControl x:Name="OfflineBlock"
