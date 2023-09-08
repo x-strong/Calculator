@@ -19,6 +19,9 @@
 
 		<UnoXamlResourcesTrimming Condition="'$(Configuration)'=='Release'">true</UnoXamlResourcesTrimming>
 
+		<!-- https://github.com/dotnet/runtime/issues/50508 -->
+		<WasmShellEnableAOTDeduplication>false</WasmShellEnableAOTDeduplication>
+
 		<!--
 		Uncomment to generate an AOT profile
 		<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
