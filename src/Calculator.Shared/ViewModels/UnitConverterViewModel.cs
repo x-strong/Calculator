@@ -557,6 +557,16 @@ namespace CalculatorApp.ViewModel
 			}
 		}
 
+		public bool CanUseMUX
+#if __IOS__ || __ANDROID__
+			=> false;
+#else
+			=> true;
+#endif
+
+		public bool CanUseWUX
+			=> !CanUseMUX;
+
 
 		private bool m_IsCurrencyCurrentCategory;
 
