@@ -411,7 +411,15 @@ namespace CalculatorApp
 
 		void OnDelayTimerTick(object sender, object e)
 		{
-			CurrencyLoadingProgressRing.IsActive = true;
+			if (CurrencyLoadingProgressRingMUX is not null)
+			{
+				CurrencyLoadingProgressRingMUX.IsActive = true;
+			}
+
+			if (CurrencyLoadingProgressRingWUX is not null)
+			{
+				CurrencyLoadingProgressRingWUX.IsActive = true;
+			}
 			m_delayTimer.Stop();
 		}
 
@@ -422,7 +430,15 @@ namespace CalculatorApp
 				m_delayTimer.Stop();
 			}
 
-			CurrencyLoadingProgressRing.IsActive = false;
+			if (CurrencyLoadingProgressRingMUX is not null)
+			{
+				CurrencyLoadingProgressRingMUX.IsActive = false;
+			}
+
+			if (CurrencyLoadingProgressRingWUX is not null)
+			{
+				CurrencyLoadingProgressRingWUX.IsActive = false;
+			}
 		}
 
 		// The function will make sure the UI will have enough space to display supplementary results and currency information
