@@ -514,8 +514,6 @@ namespace CalculatorApp.ViewModel
 
         public StandardCalculatorViewModel()
         {
-			Console.WriteLine("new StandardCalculatorViewModel()");
-
             m_DisplayValue = "0";
             m_DecimalDisplayValue = "0";
             m_HexDisplayValue = "0";
