@@ -117,7 +117,8 @@ namespace CalculatorApp.ViewModel
 		{
 			// TODO UNO
 			//m_currentRegionCode = region.CodeTwoLetter;
-			m_currentRegionCode = new RegionInfo(CultureInfo.CurrentCulture.TwoLetterISOLanguageName).TwoLetterISORegionName;
+			Console.WriteLine($"CultureInfo.CurrentCulture.TwoLetterISOLanguageName: {CultureInfo.CurrentCulture.TwoLetterISOLanguageName}");
+			m_currentRegionCode = new RegionInfo(CultureInfo.CurrentCulture.Name).TwoLetterISORegionName;
 
 			m_categoryList = new CalculatorList<UCM.Category>();
 			m_categoryToUnits = new CategoryToUnitVectorMap(EqualityComparer<UCM.Category>.Default);
