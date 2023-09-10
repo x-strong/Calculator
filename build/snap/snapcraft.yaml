@@ -49,5 +49,6 @@ apps:
     extensions: [gnome-3-28]
     command: Calculator.Skia.Gtk
     plugs:
+      - network
       - mount-observe
       - process-control
