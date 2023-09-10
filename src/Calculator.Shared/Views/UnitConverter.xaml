@@ -1043,10 +1043,11 @@
 							<HyperlinkButton x:Name="CurrencyRefreshBlock"
 											x:Uid="RefreshButtonText"
 											Foreground="{ThemeResource SystemControlHyperlinkBaseHighBrush}"
+											VerticalContentAlignment="Center"
 											Click="CurrencyRefreshButton_Click" />
 
 							<TextBlock 
-									Margin="5,0,0,0" 
+									Margin="5,1,0,0" 
 									FontStyle="Italic"
 									VerticalAlignment="Center"
 									Foreground="{ThemeResource SystemControlHyperlinkBaseHighBrush}">
