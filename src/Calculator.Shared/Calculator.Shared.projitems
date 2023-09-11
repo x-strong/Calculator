@@ -383,10 +383,10 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\uz-Latn-UZ\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\vi-VN\CEngineStrings.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\vi-VN\Resources.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-CN\CEngineStrings.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-CN\Resources.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-TW\CEngineStrings.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-TW\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-Hans\CEngineStrings.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-Hans\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-Hant\CEngineStrings.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Resources\zh-Hant\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)DataLoaders\DefautlFromToCurrency.json" />
