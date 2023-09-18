@@ -25,6 +25,9 @@
 		<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled >
 		<UnoXamlResourcesTrimming>false</UnoXamlResourcesTrimming>
 		-->
+		
+		<!-- Disable SIMD for edge enhanced security mode validation -->
+		<WasmShellEnableSimd>false</WasmShellEnableSimd>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="..\Calculator.UWP\Assets\*.png" Link="Assets\%(FileName)%(Extension)" />
