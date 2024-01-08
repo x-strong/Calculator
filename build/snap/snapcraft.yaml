@@ -46,7 +46,7 @@ parts:
 
 apps:
   uno-calculator:
-    extensions: [gnome-3-28]
+    extensions: [gnome-3-34]
     command: Calculator.Skia.Gtk
     plugs:
       - network
