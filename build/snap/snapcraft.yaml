@@ -46,7 +46,8 @@ parts:
 
 apps:
   uno-calculator:
-    extensions: [gnome-3-34]
+    # https://forum.snapcraft.io/t/the-gnome-3-38-extension/22923
+    extensions: [gnome-3-38]
     command: Calculator.Skia.Gtk
     plugs:
       - network
