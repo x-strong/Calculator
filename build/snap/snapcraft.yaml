@@ -1,5 +1,5 @@
 name: uno-calculator
-base: core18
+base: core20
 summary: The Uno Calculator
 description: |
   The powerful Uno Calculator receives a makeover from Uno Platform with a wide variety of features.
