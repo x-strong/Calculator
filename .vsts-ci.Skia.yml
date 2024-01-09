@@ -232,7 +232,7 @@ jobs:
       downloadPath: '$(build.sourcesdirectory)/build'
 
   - script: |
-        sudo snap install snapcraft --classic --channel stable
+        sudo snap install snapcraft --classic --channel 7.x
         sudo usermod --append --groups lxd $USER
         export PATH=$PATH:/snap/bin
         sudo chown root:root /
