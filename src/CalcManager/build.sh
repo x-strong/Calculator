@@ -9,7 +9,7 @@
 #   source ./emsdk_env.sh
 # Navigate back to this file's folder in the same terminal
 
-mkdir -p bin/wasm
+mkdir -p bin/wasm/CalcManager.bc/3.0.0/st,simd
 
 echo Generating LLVM Bitcode files
 emcc \
