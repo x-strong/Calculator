@@ -32,7 +32,7 @@ jobs:
 
   - template: build-calcmanager-windows.yml
 
-  - script: dotnet publish -c Release -r win10-x64 --self-contained true $(build.sourcesdirectory)/src/Calculator.Skia.Gtk/Calculator.Skia.Gtk.csproj
+  - script: dotnet publish -c Release -r win-x64 --self-contained true $(build.sourcesdirectory)/src/Calculator.Skia.Gtk/Calculator.Skia.Gtk.csproj
     displayName: 'Build Skia win10-x64'
 
   - task: ArchiveFiles@2
