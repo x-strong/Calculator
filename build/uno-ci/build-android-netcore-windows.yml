@@ -12,9 +12,9 @@ jobs:
      clean: all
 
   steps:
+  - template: dotnet-install-windows.yml
   - template: canary-updater.yml
   - template: gitversion.yml
-  - template: dotnet-install-windows.yml
   - template: jdk-setup.yml
 
   - task: MSBuild@1

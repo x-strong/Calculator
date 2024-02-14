@@ -55,6 +55,12 @@ jobs:
       artifactName: CalcManagerLibs
       downloadPath: '$(build.sourcesdirectory)/src/build'
 
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK'
+    retryCountOnTaskFailure: 3
+    inputs:
+      version: 8.0.200
+
   - script: |
         mkdir -p $(build.sourcesdirectory)/src/CalcManager/bin/runtimes
         cp -rv $(build.sourcesdirectory)/src/build/CalcManagerLibs/* $(build.sourcesdirectory)/src/CalcManager/bin/runtimes
@@ -63,12 +69,6 @@ jobs:
 
   - template: build/uno-ci/canary-updater.yml
   - template: build/uno-ci/gitversion.yml
-
-  - task: UseDotNet@2
-    displayName: 'Use .NET SDK'
-    retryCountOnTaskFailure: 3
-    inputs:
-      version: 7.0.400
 
   - task: MSBuild@1
     displayName: 'Setup versions'

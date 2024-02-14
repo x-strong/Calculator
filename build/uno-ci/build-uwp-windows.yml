@@ -12,15 +12,15 @@ jobs:
      clean: all
 
   steps:
-  - template: canary-updater.yml
-  - template: gitversion.yml
-
   - task: UseDotNet@2
     displayName: 'Use .NET SDK'
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 7.0.400
+      version: 8.0.200
+
+  - template: canary-updater.yml
+  - template: gitversion.yml
 
   - template: jdk-setup.yml
 
