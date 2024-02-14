@@ -2,7 +2,7 @@ jobs:
 - job: iOS
 
   pool:
-    vmImage: macOS-12
+    vmImage: macOS-13
 
   variables:
     - name: NUGET_PACKAGES
@@ -16,17 +16,10 @@ jobs:
 
   steps:
 
+  - template: build/uno-ci/dotnet-install-mac.yml
   - template: build/uno-ci/canary-updater.yml
   - template: build/uno-ci/gitversion.yml
-  - template: build/uno-ci/dotnet-install-mac.yml
   - template: build/uno-ci/jdk-setup.yml
-
-  - task: UseDotNet@2
-    displayName: 'Use .Net Core runtime 3.1.201'
-    retryCountOnTaskFailure: 3
-    inputs:
-      packageType: runtime
-      version: 3.1.3
 
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
@@ -69,14 +62,14 @@ jobs:
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
-      dotnet publish -f net7.0-ios -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-netcore.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION"
+      dotnet publish -f net8.0-ios -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-netcore.binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION"
 
     displayName: 'Build iOS Binaries (netcore)'
 
   - task: CopyFiles@2
     displayName: 'Publish iOS Binaries (netcore)'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net7.0-ios
+      SourceFolder: $(build.sourcesdirectory)/src/Calculator.Mobile/bin/Release/net8.0-ios
       Contents:  |
         **/*.ipa
         **/*.dSym/**

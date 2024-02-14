@@ -12,17 +12,9 @@ jobs:
      clean: all
 
   steps:
+  - template: dotnet-install-windows.yml
   - template: canary-updater.yml
   - template: gitversion.yml
-
-  - task: UseDotNet@2
-    displayName: 'Use .NET SDK'
-    retryCountOnTaskFailure: 3
-    inputs:
-      packageType: sdk
-      version: 7.0.400
-
-  - template: dotnet-install-windows.yml
   - template: jdk-setup.yml
 
   - task: MSBuild@1
@@ -40,14 +32,14 @@ jobs:
 
   - template: build-calcmanager-windows.yml
 
-  - script: dotnet publish -c Release -r win10-x64 --self-contained true $(build.sourcesdirectory)/src/Calculator.Skia.Gtk/Calculator.Skia.Gtk.csproj
+  - script: dotnet publish -c Release -r win-x64 --self-contained true $(build.sourcesdirectory)/src/Calculator.Skia.Gtk/Calculator.Skia.Gtk.csproj
     displayName: 'Build Skia win10-x64'
 
   - task: ArchiveFiles@2
     displayName: 'Archive Skia win10-x64'
     retryCountOnTaskFailure: 3
     inputs:
-      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net7.0\win10-x64\publish'
+      rootFolderOrFile: '$(build.sourcesdirectory)\src\Calculator.Skia.Gtk\bin\Release\net8.0\win-x64\publish'
       archiveFile: '$(Build.ArtifactStagingDirectory)/skia/Calculator-win10-x64.zip' 
       includeRootFolder: false
       
