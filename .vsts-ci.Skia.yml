@@ -136,13 +136,6 @@ jobs:
 
   - template: build/uno-ci/gitversion.yml
 
-  - task: gitversion/execute@0
-    inputs:
-      updateAssemblyInfo: 'False'
-      useConfigFile: true
-      configFilePath: gitversion.yml
-    displayName: Use GitVersion
-
   - task: UseDotNet@2
     displayName: 'Use .NET SDK'
     retryCountOnTaskFailure: 3
@@ -355,15 +348,6 @@ jobs:
       packageType: sdk
       version: '3.1.x'
 
-  - template: build/uno-ci/gitversion.yml
-
-  - task: gitversion/execute@0
-    inputs:
-      updateAssemblyInfo: 'False'
-      useConfigFile: true
-      configFilePath: gitversion.yml
-    displayName: Use GitVersion
-
   - task: DownloadBuildArtifacts@0
     inputs:
       artifactName: Calculator
@@ -374,9 +358,11 @@ jobs:
       sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confold" -y install sudo"
       sudo apt update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-      sudo apt -y install zip
+      sudo apt -y install zip gitS
     displayName: 'Setup dependencies'
     retryCountOnTaskFailure: 3
+
+  - template: build/uno-ci/gitversion.yml
 
   - script: |
         cd $(build.sourcesdirectory)/build/appimage
