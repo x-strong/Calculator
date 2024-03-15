@@ -358,7 +358,7 @@ jobs:
       sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confold" -y install sudo"
       sudo apt update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-      sudo apt -y install zip gitS
+      sudo apt -y install zip git
     displayName: 'Setup dependencies'
     retryCountOnTaskFailure: 3
 
