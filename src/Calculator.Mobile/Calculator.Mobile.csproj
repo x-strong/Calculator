@@ -98,6 +98,9 @@
 				</NativeReference>
 			</ItemGroup>
 			<ItemGroup>
+				<BundleResource Include="iOS\PrivacyInfo.xcprivacy" LogicalName="PrivacyInfo.xcprivacy" />
+			</ItemGroup>
+			<ItemGroup>
 				<!-- Required to avoid
 					 Undefined symbols for architecture arm64:
 							"_kSecImportExportPassphrase", referenced from:
