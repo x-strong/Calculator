@@ -2633,15 +2633,15 @@
     <comment>The timestamp of currency conversion ratios fetched from an online service. %1 is the date. %2 is the time. Example: "Updated Sep 28, 2016 5:42 PM"</comment>
   </data>
   <data name="RefreshButtonText.Content" xml:space="preserve">
-    <value>更新频率</value>
+    <value>更新汇率</value>
     <comment>The text displayed for a hyperlink button that refreshes currency converter ratios.</comment>
   </data>
   <data name="DataChargesMayApply" xml:space="preserve">
-    <value>可能收取数据费。</value>
+    <value>可能会收取数据费用。</value>
     <comment>The text displayed when users are on a metered connection and using currency converter.</comment>
   </data>
   <data name="FailedToRefresh" xml:space="preserve">
-    <value>无法获取新费率。请稍后重试。</value>
+    <value>无法获取新汇率。请稍后重试。</value>
     <comment>The text displayed when currency ratio data fails to load.</comment>
   </data>
   <data name="OfflineStatusHyperlinkText" xml:space="preserve">
