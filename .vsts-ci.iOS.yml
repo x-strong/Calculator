@@ -2,7 +2,7 @@ jobs:
 - job: iOS
 
   pool:
-    vmImage: macOS-14
+    vmImage: macOS-15
 
   variables:
     - name: XCODE_ROOT
