@@ -28,6 +28,7 @@ jobs:
     inputs:
       certSecureFile: UnoPlatform-Apple-Distribution.p12
       certPwd: $(appleappstorecertificatepassword)
+      opensslPkcsArgs: -legacy
       keychain: temp
 
   - task: InstallAppleCertificate@2
@@ -35,6 +36,7 @@ jobs:
     inputs:
       certSecureFile: UnoPlatform-MacInstaller.p12
       certPwd: $(appleappstorecertificatepassword)
+      opensslPkcsArgs: -legacy
       keychain: temp
 
   - task: InstallAppleProvisioningProfile@1 
