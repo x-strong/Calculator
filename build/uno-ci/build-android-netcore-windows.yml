@@ -17,7 +17,7 @@ jobs:
   - template: gitversion.yml
   - template: jdk-setup.yml
   
-  - bash:
+  - script:
       dotnet build $(build.sourcesdirectory)\src\build\build.csproj /p:Configuration=Release
     displayName: Update versions
 
