@@ -46,25 +46,15 @@ jobs:
       provisioningProfileLocation: secureFiles
       provProfileSecureFile: Uno_Calculator_Canary_iOS.mobileprovision
 
+  - bash:
+        dotnet build $(build.sourcesdirectory)/src/build/build.csproj /p:BuildPlatformTarget=iOS
+    displayName: Update versions
+
   - bash: |
       cd $(build.sourcesdirectory)/src/CalcManager
       chmod +x build_ios.sh
       ./build_ios.sh
-
     displayName: Build native CalcManager
-
-  - task: MSBuild@1
-    inputs:
-      solution: '$(build.sourcesdirectory)/src/build/build.csproj'
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r  /p:BuildPlatformTarget=iOS /bl:$(build.artifactstagingdirectory)/build.binlog 
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: true
-      createLogFile: true
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
