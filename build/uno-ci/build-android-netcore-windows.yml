@@ -16,19 +16,10 @@ jobs:
   - template: canary-updater.yml
   - template: gitversion.yml
   - template: jdk-setup.yml
-
-  - task: MSBuild@1
-    inputs:
-      solution: src/build/build.csproj
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r /p:Configuration=Release /detailedsummary
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: false
-      createLogFile: false
+  
+  - bash:
+      dotnet build $(build.sourcesdirectory)/src/build/build.csproj /p:Configuration=Release
+    displayName: Update versions
 
   - template: build-calcmanager-windows.yml
 
