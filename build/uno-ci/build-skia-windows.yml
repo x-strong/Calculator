@@ -18,7 +18,7 @@ jobs:
   - template: jdk-setup.yml
 
   - bash:
-      dotnet build $(build.sourcesdirectory)/src/build/build.csproj /p:Configuration=Release
+      dotnet build $(build.sourcesdirectory)\src\build\build.csproj -c Release
     displayName: Update versions
 
   - template: build-calcmanager-windows.yml
