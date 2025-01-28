@@ -2,7 +2,7 @@ jobs:
 - job: Catalyst
 
   pool:
-    vmImage: macOS-14
+    vmImage: macOS-15
 
   variables:
     - name: XCODE_ROOT
@@ -53,25 +53,16 @@ jobs:
     parameters:
       xCodeRoot: $(XCODE_ROOT)
 
+  - bash:
+        dotnet build $(build.sourcesdirectory)/src/build/build.csproj /p:BuildPlatformTarget=iPhoneSimulator
+    displayName: Update versions
+
   - bash: |
       cd $(build.sourcesdirectory)/src/CalcManager
       chmod +x build_catalyst.sh
       ./build_catalyst.sh
 
     displayName: Build native CalcManager
-
-  - task: MSBuild@1
-    inputs:
-      solution: '$(build.sourcesdirectory)/src/build/build.csproj'
-      msbuildLocationMethod: version
-      msbuildVersion: latest
-      msbuildArchitecture: x86
-      msbuildArguments: /r /p:BuildPlatformTarget=iPhoneSimulator /bl:$(build.artifactstagingdirectory)/build.binlog 
-      clean: false
-      maximumCpuCount: true
-      restoreNugetPackages: false
-      logProjectEvents: true
-      createLogFile: true
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Calculator.mobile
