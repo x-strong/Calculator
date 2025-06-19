@@ -4,7 +4,7 @@ jobs:
   container: unoplatform/dotnet-build:3.0.1
 
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-latest'
 
   variables:
     NUGET_PACKAGES: $(build.sourcesdirectory)/.nuget
@@ -37,7 +37,7 @@ jobs:
   container: unoplatform/dotnet-build:3.0.1
 
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-latest'
 
   variables:
     NUGET_PACKAGES: $(build.sourcesdirectory)/.nuget
@@ -193,7 +193,7 @@ jobs:
   dependsOn:
     - Linux_Skia_x86
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-latest'
 
   steps:
   - task: DownloadBuildArtifacts@0
@@ -314,7 +314,7 @@ jobs:
     - Linux_Skia_x86
     
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-latest'
 
   container:
     image: appimagecrafters/appimage-builder:0.7.2
