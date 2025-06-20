@@ -202,6 +202,7 @@ jobs:
       downloadPath: '$(build.sourcesdirectory)/build'
 
   - script: |
+        sudo apt update
         sudo snap install snapcraft --classic --channel 7.x
         sudo usermod --append --groups lxd $USER
         export PATH=$PATH:/snap/bin
