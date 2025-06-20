@@ -193,7 +193,7 @@ jobs:
   dependsOn:
     - Linux_Skia_x86
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-22.04'
 
   steps:
   - task: DownloadBuildArtifacts@0
@@ -314,7 +314,7 @@ jobs:
     - Linux_Skia_x86
     
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-22.04'
 
   container:
     image: appimagecrafters/appimage-builder:0.7.2
