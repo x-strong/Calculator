@@ -211,7 +211,7 @@ jobs:
   - script: |
         export PATH=$PATH:/snap/bin
         cd $(build.sourcesdirectory)/build
-        sg lxd -c 'snapcraft --destructive-mode'
+        snapcraft --destructive-mode
     displayName: 'Build Snap'
 
   - task: CopyFiles@2
@@ -312,7 +312,7 @@ jobs:
     vmImage: 'ubuntu-24.04'
 
   container:
-    image: appimagecrafters/appimage-builder:0.7.2
+    image: appimagecrafters/appimage-builder:1.1.0
     options: "--name ci-container -v /usr/bin/docker:/tmp/docker:ro"
 
   steps:
