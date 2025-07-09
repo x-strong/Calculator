@@ -312,7 +312,7 @@ jobs:
     vmImage: 'ubuntu-24.04'
 
   container:
-    image: appimagecrafters/appimage-builder:1.1.0
+    image: appimagecrafters/appimage-builder:0.7.2
 
   steps:
   - task: UseDotNet@2
