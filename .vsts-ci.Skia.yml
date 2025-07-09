@@ -203,7 +203,7 @@ jobs:
 
   - script: |
         sudo apt update
-        sudo snap install snapcraft --classic --channel 8.x
+        sudo snap install snapcraft --classic --channel 7.x
 
     displayName: 'Install Snapcraft'
     retryCountOnTaskFailure: 3
