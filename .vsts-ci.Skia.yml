@@ -193,7 +193,7 @@ jobs:
   dependsOn:
     - Linux_Skia_x86
   pool:
-    vmImage: 'ubuntu-22.04'
+    vmImage: 'ubuntu-24.04'
 
   steps:
   - task: DownloadBuildArtifacts@0
@@ -203,13 +203,7 @@ jobs:
 
   - script: |
         sudo apt update
-        sudo snap install snapcraft --classic --channel 7.x
-        sudo usermod --append --groups lxd $USER
-        export PATH=$PATH:/snap/bin
-        sudo chown root:root /
-        sudo /snap/bin/lxd.migrate -yes
-        sudo /snap/bin/lxd waitready
-        sudo /snap/bin/lxd init --auto
+        sudo snap install snapcraft --classic --channel 8.x
 
     displayName: 'Install Snapcraft'
     retryCountOnTaskFailure: 3
@@ -217,7 +211,7 @@ jobs:
   - script: |
         export PATH=$PATH:/snap/bin
         cd $(build.sourcesdirectory)/build
-        sg lxd -c 'snapcraft --use-lxd'
+        sg lxd -c 'snapcraft --destructive-mode'
     displayName: 'Build Snap'
 
   - task: CopyFiles@2
@@ -315,7 +309,7 @@ jobs:
     - Linux_Skia_x86
     
   pool:
-    vmImage: 'ubuntu-22.04'
+    vmImage: 'ubuntu-24.04'
 
   container:
     image: appimagecrafters/appimage-builder:0.7.2
